@@ -1,4 +1,4 @@
-name := "tweet-api"
+name := "discount-calculator"
 
 version := "0.1"
 

@@ -2,6 +2,8 @@
 target
 *.class
 *.log
+project
+.bsp
 
 #IntelliJ
 *.iml
