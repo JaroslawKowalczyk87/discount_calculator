@@ -23,6 +23,6 @@ object SummaryGenerator {
   }
 
   def pencesToPounds(pences: Int): String =
-    "£" + pences/100 + "." + pences%100
+    "£" + pences/100 + "." + "%02d".format(pences%100)
 
 }
