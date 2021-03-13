@@ -1,8 +1,10 @@
 package main
 
+import main.DiscountFunctions.DiscountsList
+
 object SummaryGenerator {
 
-  def generateSummary(subtotal: Int, discounts: List[(String, Int)]): String = {
+  def generateSummary(subtotal: Int, discounts: DiscountsList): String = {
     val subtotalString = "Subtotal: " + pencesToPounds(subtotal)
 
     val discountsAvailable = discounts.filter(_._2 > 0)

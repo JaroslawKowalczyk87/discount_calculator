@@ -1,4 +1,4 @@
-import main.DiscountFunctions.{ShoppingBasket, apples10pcOff, applyAllDiscounts, breadHalfPriceFor2SoupTins}
+import main.DiscountFunctions.{apples10pcOff, applyAllDiscounts, breadHalfPriceFor2SoupTins}
 import main.ProductPricesDB.productPrices
 import org.scalatest.FunSuite
 
