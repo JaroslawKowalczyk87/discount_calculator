@@ -1,21 +1,24 @@
 package main
 
-import main.DiscountFunctions.{ShoppingBasket, applyAllDiscounts}
-import main.ShoppingCartFunctions.{calculateSubtotal, createShoppingBasket}
+import main.Pipeline.pipeline
 
 
 object Main extends App {
 
-  // TODO add input and output
+  var input = "stuff"
+  println("Input, please!")
 
-  val inputString = "PriceBasket Bread Bread Soup Bread Milk Soup Cocoa Cocoa Apples"
-  val shoppingBasket: ShoppingBasket = createShoppingBasket(inputString)
+  while(input != "stop"){
+    input = scala.io.StdIn.readLine()
+    if(input == "stop") {
+      println("Thanks for stopping by!")
+    }
+    else {
+      val result = pipeline(input)
+      println(result)
+      println("More input!")
+    }
+  }
 
-  println(shoppingBasket)
-
-  val listOfDiscounts = applyAllDiscounts(shoppingBasket)
-  val subtotal = calculateSubtotal(shoppingBasket)
-
-  print(SummaryGenerator.generateSummary(subtotal, listOfDiscounts))
 
 }

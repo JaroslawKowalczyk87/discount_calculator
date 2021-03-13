@@ -18,6 +18,8 @@ class ShoppingCartFunctionsSpec extends FunSuite {
     productPrices.getOrElse("Milk", 0) * 1 +
     productPrices.getOrElse("Apples", 0) * 4
 
+  val incorrectInputStream = "PrinceBasket Bread Bread Soup Milk"
+
   test("input should be processed correctly") {
     val basketCreated = createShoppingBasket(inputStream0)
     assert(basketCreated.equals(expectedBasket0))
@@ -28,5 +30,11 @@ class ShoppingCartFunctionsSpec extends FunSuite {
     val basketCreated = createShoppingBasket(inputStream1)
     assert(basketCreated.equals(expectedBasket1))
     assert(calculateSubtotal(basketCreated) == expectedTotal1)
+  }
+
+  test("if the input stream doesn't start with 'PriceBasket' empty basket should be returned") {
+    val emptyBasket = createShoppingBasket(incorrectInputStream)
+    assert(emptyBasket.equals(Map()))
+    assert(calculateSubtotal(emptyBasket) == 0)
   }
 }
