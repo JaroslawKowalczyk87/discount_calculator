@@ -1,15 +1,23 @@
 package main
 
 import ProductPricesDB.productPrices
+import main.DiscountFunctions.ShoppingBasket
 
 object ShoppingCartFunctions {
 
   val stock = productPrices.keys.toList
 
-  val deleteProductsNotInStock: Map[String, Int] => Map[String, Int] =
-    _.filter(x => stock.contains(x._1))
+  def createShoppingBasket(input: String): ShoppingBasket = {
+    val inputTokenized = input.split(" ")
+    if (inputTokenized.head != "PriceBasket")  {
+      println("Command should start with 'PriceBasket', ignoring the input")
+      Map()
+    }
+    else inputTokenized.tail.filter(stock.contains(_)).groupBy(identity).mapValues(_.length)
+  }
 
-  val calculateSubtotal: Map[String, Int] => Int =
-    shoppingCart => shoppingCart.map(x => x._2 * productPrices.getOrElse(x._1,0)).sum
+
+  def calculateSubtotal(shoppingBasket: ShoppingBasket): Int =
+    shoppingBasket.map(x => x._2 * productPrices.getOrElse(x._1,0)).sum
 
 }

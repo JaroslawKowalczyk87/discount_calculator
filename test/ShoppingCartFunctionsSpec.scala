@@ -1,0 +1,3 @@
+class ShoppingCartFunctionsSpec {
+//TODO
+}

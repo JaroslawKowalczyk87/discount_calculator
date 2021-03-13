@@ -1,0 +1,3 @@
+class PipelineSpec {
+// TODO
+}

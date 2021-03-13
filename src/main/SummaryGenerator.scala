@@ -1,14 +1,17 @@
 package main
 
-object PricePrinter {
+object SummaryGenerator {
 
-  def print(subtotal: Int, discounts: List[(String, Int)]): String = {
+  def generateSummary(subtotal: Int, discounts: List[(String, Int)]): String = {
     val subtotalString = "Subtotal: " + pencesToPounds(subtotal)
+
+    val discountsAvailable = discounts.filter(_._2 > 0)
     val discountsString = {
-      if (discounts.isEmpty) "(No offers available)"
-      else discounts.map(discount => discount._1 + pencesToPounds(discount._2)).mkString("\n")
+      if (discountsAvailable.isEmpty) "(No offers available)"
+      else discountsAvailable.map(discount => discount._1 + pencesToPounds(discount._2)).mkString("\n")
     }
-    val sum_of_discounts = discounts.map(_._2).sum
+
+    val sum_of_discounts = discountsAvailable.map(_._2).sum
     val totalString = "Total price: " + pencesToPounds(subtotal - sum_of_discounts)
     s"""
       |$subtotalString

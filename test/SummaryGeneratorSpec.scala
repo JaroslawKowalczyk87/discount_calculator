@@ -1,0 +1,3 @@
+class SummaryGeneratorSpec {
+//TODO
+}

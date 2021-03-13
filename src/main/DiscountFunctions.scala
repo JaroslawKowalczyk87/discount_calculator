@@ -4,7 +4,13 @@ import ProductPricesDB.productPrices
 
 object DiscountFunctions {
 
-  type DiscountCalculatorFunction = Map[String, Int] => (String, Int)
+  type ShoppingBasket = Map[String, Int]
+
+  type Discount = (String, Int)
+
+  type DiscountsList = List[Discount]
+
+  type DiscountCalculatorFunction = ShoppingBasket => Discount
 
   val apples10pcOff: DiscountCalculatorFunction =
     shoppingCart => {
@@ -23,6 +29,8 @@ object DiscountFunctions {
     }
 
   val currentDiscounts: List[DiscountCalculatorFunction] = List(apples10pcOff, breadHalfPriceFor2SoupTins)
+
+  val applyAllDiscounts: ShoppingBasket => DiscountsList = basket => currentDiscounts.map(discount => discount(basket))
 
 
 }

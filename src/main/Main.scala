@@ -1,17 +1,21 @@
 package main
 
+import main.DiscountFunctions.{ShoppingBasket, applyAllDiscounts}
+import main.ShoppingCartFunctions.{calculateSubtotal, createShoppingBasket}
+
 
 object Main extends App {
 
-  val shoppingCart = Map("Apples" -> 1, "Bread" -> 2, "Soup" -> 4, "Milk" -> 1, "Cocoa" -> 5)
+  // TODO add input and output
 
-  val filteredCart = ShoppingCartFunctions.deleteProductsNotInStock(shoppingCart)
+  val inputString = "PriceBasket Bread Bread Soup Bread Milk Soup Cocoa Cocoa Apples"
+  val shoppingBasket: ShoppingBasket = createShoppingBasket(inputString)
 
-  println(filteredCart)
+  println(shoppingBasket)
 
-  val listOfDiscounts = DiscountFunctions.currentDiscounts.map(x => x(filteredCart))
-  val subtotal = ShoppingCartFunctions.calculateSubtotal(filteredCart)
+  val listOfDiscounts = applyAllDiscounts(shoppingBasket)
+  val subtotal = calculateSubtotal(shoppingBasket)
 
-  print(PricePrinter.print(subtotal, listOfDiscounts))
+  print(SummaryGenerator.generateSummary(subtotal, listOfDiscounts))
 
 }
