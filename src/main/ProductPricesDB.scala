@@ -1,6 +1,8 @@
 package main
 
+// In production, this would probably by handled by some database.
+
 object ProductPricesDB {
   val productPrices: Map[String, Int] =
-    Map("Soup" -> 65, "Bread" -> 80, "Milk" -> 130, "Apples" -> 100)
+    Map("soup" -> 65, "bread" -> 80, "milk" -> 130, "apples" -> 100)
 }

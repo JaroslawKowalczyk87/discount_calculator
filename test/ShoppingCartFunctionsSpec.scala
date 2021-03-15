@@ -4,21 +4,21 @@ import org.scalatest.FunSuite
 
 class ShoppingCartFunctionsSpec extends FunSuite {
 
-  val inputStream0 = "PriceBasket Bread Bread Soup Bread Milk Soup Apples"
-  val expectedBasket0 = Map("Bread" -> 3, "Soup" -> 2, "Milk" -> 1, "Apples" -> 1)
-  val expectedTotal0 = productPrices.getOrElse("Bread", 0) * 3 +
-    productPrices.getOrElse("Soup", 0) * 2 +
-    productPrices.getOrElse("Milk", 0) * 1 +
-    productPrices.getOrElse("Apples", 0) * 1
+  val inputStream0 = "PriceBasket bread bread soup bread milk soup apples"
+  val expectedBasket0 = Map("bread" -> 3, "soup" -> 2, "milk" -> 1, "apples" -> 1)
+  val expectedTotal0 = productPrices.getOrElse("bread", 0) * 3 +
+    productPrices.getOrElse("soup", 0) * 2 +
+    productPrices.getOrElse("milk", 0) * 1 +
+    productPrices.getOrElse("apples", 0) * 1
 
-  val inputStream1 = "PriceBasket Bread Bread Soup Bread Milk Apples Apples Apples Soup Cocoa SaltVinegarCrisps Apples"
-  val expectedBasket1 = Map("Bread" -> 3, "Soup" -> 2, "Milk" -> 1, "Apples" -> 4)
-  val expectedTotal1 = productPrices.getOrElse("Bread", 0) * 3 +
-    productPrices.getOrElse("Soup", 0) * 2 +
-    productPrices.getOrElse("Milk", 0) * 1 +
-    productPrices.getOrElse("Apples", 0) * 4
+  val inputStream1 = "PriceBasket bread bread soup bread milk apples apples apples soup Cocoa SaltVinegarCrisps apples"
+  val expectedBasket1 = Map("bread" -> 3, "soup" -> 2, "milk" -> 1, "apples" -> 4)
+  val expectedTotal1 = productPrices.getOrElse("bread", 0) * 3 +
+    productPrices.getOrElse("soup", 0) * 2 +
+    productPrices.getOrElse("milk", 0) * 1 +
+    productPrices.getOrElse("apples", 0) * 4
 
-  val incorrectInputStream = "PrinceBasket Bread Bread Soup Milk"
+  val incorrectInputStream = "PrinceBasket bread bread soup milk"
 
   test("input should be processed correctly") {
     val basketCreated = createShoppingBasket(inputStream0)

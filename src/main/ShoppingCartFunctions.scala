@@ -13,7 +13,7 @@ object ShoppingCartFunctions {
       println("Command should start with 'PriceBasket', ignoring the input")
       Map()
     }
-    else inputTokenized.tail.filter(stock.contains(_)).groupBy(identity).mapValues(_.length)
+    else inputTokenized.tail.map(_.toLowerCase).filter(stock.contains(_)).groupBy(identity).mapValues(_.length)
   }
 
 
