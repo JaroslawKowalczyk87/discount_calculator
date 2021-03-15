@@ -1,10 +1,9 @@
+import TestUtils.normalized
 import main.DiscountFunctions.DiscountsList
 import main.SummaryGenerator.{generateSummary, pencesToPounds}
 import org.scalatest.FunSuite
 
 class SummaryGeneratorSpec extends FunSuite {
-
-  def normalized(s: String): String = s.replaceAll("(?s)\\s+", " ").trim
 
   test("summary should be generated as expected") {
     val subtotal = 500
